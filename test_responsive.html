@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="description" content="@feelthisray - Script HTML by Feeldream Repl Co">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <title>Test Responsif - Surat Ulang Tahun</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        
+        .device-frame {
+            border: 8px solid #333;
+            border-radius: 20px;
+            margin: 20px auto;
+            overflow: hidden;
+            background: white;
+        }
+        
+        .desktop {
+            width: 100%;
+            max-width: 1000px;
+            height: 600px;
+        }
+        
+        .tablet {
+            width: 768px;
+            height: 1024px;
+            max-width: 100%;
+        }
+        
+        .mobile {
+            width: 375px;
+            height: 667px;
+            max-width: 100%;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        button.active {
+            background-color: #2196F3;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Test Responsif - Surat Ulang Tahun</h1>
+        <p>Gunakan tombol di bawah untuk menguji tampilan di berbagai ukuran layar:</p>
+        
+        <div class="controls">
+            <button id="desktopBtn" class="active" onclick="changeDevice('desktop')">Desktop (1000x600)</button>
+            <button id="tabletBtn" onclick="changeDevice('tablet')">Tablet (768x1024)</button>
+            <button id="mobileBtn" onclick="changeDevice('mobile')">Mobile (375x667)</button>
+        </div>
+        
+        <div id="frameContainer" class="device-frame desktop">
+            <iframe id="testFrame" src="suratbuatmu.html"></iframe>
+        </div>
+    </div>
+    
+    <script>
+        function changeDevice(device) {
+            const frameContainer = document.getElementById('frameContainer');
+            const desktopBtn = document.getElementById('desktopBtn');
+            const tabletBtn = document.getElementById('tabletBtn');
+            const mobileBtn = document.getElementById('mobileBtn');
+            
+            // Remove all device classes
+            frameContainer.className = 'device-frame';
+            
+            // Add appropriate class
+            frameContainer.classList.add(device);
+            
+            // Update active button
+            desktopBtn.classList.remove('active');
+            tabletBtn.classList.remove('active');
+            mobileBtn.classList.remove('active');
+            
+            if (device === 'desktop') {
+                desktopBtn.classList.add('active');
+            } else if (device === 'tablet') {
+                tabletBtn.classList.add('active');
+            } else if (device === 'mobile') {
+                mobileBtn.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
